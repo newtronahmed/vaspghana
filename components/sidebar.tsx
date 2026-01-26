@@ -20,11 +20,11 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 
 const navItems = [
-  {
-    title: "Admin Dashboard",
-    href: "/dashboard",
-    icon: LayoutDashboard,
-  },
+  // {
+  //   title: "Admin Dashboard",
+  //   href: "/dashboard",
+  //   icon: LayoutDashboard,
+  // },
   {
     title: "VASP Registry",
     href: "/registry",
