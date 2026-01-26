@@ -19,11 +19,11 @@ import { cn } from "@/lib/utils"
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Members", href: "/members", icon: Users },
+  /* { name: "Members", href: "/members", icon: Users },
   { name: "Community", href: "/community", icon: Building2 },
-  { name: "Regulator", href: "/regulator", icon: Shield },
+  { name: "Regulator", href: "/regulator", icon: Shield }, */
   { name: "VASP Registry", href: "/registry", icon: Search },
-  { name: "Member Portal", href: "/portal", icon: FileText },
+  /* { name: "Member Portal", href: "/portal", icon: FileText }, */
   { name: "Governance", href: "/governance", icon: Scale },
 ]
 

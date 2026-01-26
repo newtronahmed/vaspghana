@@ -21,10 +21,11 @@ export default function HomePage() {
             />
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/location" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Location</Link>
-            <Link href="/community" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Community</Link>
+            {/* <Link href="/location" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Location</Link>
+            <Link href="/community" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Community</Link> */}
             <Link href="/registry" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Registry</Link>
-            <Link href="/blogs" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Blogs</Link>
+            {/* <Link href="/blogs" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Blogs</Link> */}
+            <Link href="/governance" className="text-white/80 hover:text-white text-sm font-medium transition-colors">Governance</Link>
             <Button className="bg-[#25d366] hover:bg-[#20bd5c] text-white rounded-full px-6">
               Get Started
             </Button>

@@ -30,7 +30,7 @@ const navItems = [
     href: "/registry",
     icon: Building2,
   },
-  {
+  /* {
     title: "Member Portal",
     href: "/member-portal",
     icon: Users,
@@ -44,7 +44,7 @@ const navItems = [
     title: "Community Monitor",
     href: "/community",
     icon: MessageSquare,
-  },
+  }, */
   {
     title: "Governance & Policies",
     href: "/governance",
