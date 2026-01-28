@@ -52,7 +52,7 @@ export default function HomePage() {
 
           {/* Partner Logos */}
           <div className="flex flex-wrap justify-center items-center gap-12 mb-20">
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 pr-8">
+            <div className="flex items-center gap-4 bg-white shadow-lg border border-white/20 rounded-2xl p-4 pr-8 group transition-transform hover:-translate-y-1">
               <div className="w-16 h-16 relative">
                 <Image
                   src="/assets/images/bog.png"
@@ -62,11 +62,11 @@ export default function HomePage() {
                 />
               </div>
               <div className="text-left">
-                <p className="text-white font-bold leading-tight">Bank of Ghana</p>
-                <p className="text-white/60 text-xs">Bank Beta</p>
+                <p className="text-[#1a365d] font-bold leading-tight">Bank of Ghana</p>
+                <p className="text-[#1a365d]/60 text-xs">Regulator</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 pr-8">
+            <div className="flex items-center gap-4 bg-white shadow-lg border border-white/20 rounded-2xl p-4 pr-8 group transition-transform hover:-translate-y-1">
               <div className="w-16 h-16 relative">
                 <Image
                   src="/assets/images/sec.png"
@@ -76,7 +76,7 @@ export default function HomePage() {
                 />
               </div>
               <div className="text-left">
-                <p className="text-white font-bold text-xl leading-none">SEC</p>
+                <p className="text-[#1a365d] font-bold text-xl leading-none">SEC</p>
               </div>
             </div>
           </div>

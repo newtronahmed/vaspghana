@@ -1,6 +1,6 @@
 "use client"
 
-import { Users, Bell, MoreHorizontal, MessageSquare, FileText, LayoutGrid } from "lucide-react"
+import { Users, Bell, MoreHorizontal, MessageSquare, FileText, LayoutGrid, Shield } from "lucide-react"
 
 export function CommunityMonitor() {
   const communities = [
@@ -16,101 +16,138 @@ export function CommunityMonitor() {
   ]
 
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+    <div className="institutional-card bg-white overflow-hidden">
       {/* Header */}
-      <div className="bg-[#1e3a5f] text-white px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <LayoutGrid className="w-6 h-6" />
-          <span className="font-semibold text-lg">Community Monitor</span>
+      <div className="bg-[#1e3a5f] text-white px-6 py-4 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 border border-white/20 flex items-center justify-center">
+            <LayoutGrid className="w-5 h-5" />
+          </div>
+          <div>
+            <h2 className="text-lg font-serif uppercase tracking-tight leading-tight">Community Monitor</h2>
+            <p className="text-[9px] text-white/40 uppercase tracking-widest">Real-time VASP Network Oversight</p>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <button className="p-2 hover:bg-[#2d4a6f] rounded">
-            <Users className="w-5 h-5" />
+        <div className="flex items-center gap-1">
+          <button className="h-10 w-10 flex items-center justify-center hover:bg-white/10 transition-colors border border-white/10">
+            <Users className="w-4 h-4 text-white/60" />
           </button>
-          <button className="p-2 hover:bg-[#2d4a6f] rounded">
-            <Bell className="w-5 h-5" />
+          <button className="h-10 w-10 flex items-center justify-center hover:bg-white/10 transition-colors border border-white/10">
+            <Bell className="w-4 h-4 text-white/60" />
           </button>
-          <button className="p-2 hover:bg-[#2d4a6f] rounded">
-            <MoreHorizontal className="w-5 h-5" />
+          <button className="h-10 w-10 flex items-center justify-center hover:bg-white/10 transition-colors border border-white/10">
+            <MoreHorizontal className="w-4 h-4 text-white/60" />
           </button>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        <div className="grid grid-cols-2 gap-6">
-          {/* Left Column */}
-          <div>
-            <h3 className="font-semibold text-[#1e3a5f] mb-3">Community</h3>
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-gray-500 text-left">
-                  <th className="pb-2 font-medium">Community</th>
-                  <th className="pb-2 font-medium">Members</th>
-                  <th className="pb-2 font-medium">Risk Level</th>
-                  <th className="pb-2 font-medium">Admin</th>
-                </tr>
-              </thead>
-              <tbody>
-                {communities.map((community) => (
-                  <tr key={community.name} className="border-t border-gray-100">
-                    <td className="py-2 flex items-center gap-2">
-                      <div className="w-5 h-5 bg-[#1e3a5f] rounded flex items-center justify-center">
-                        <span className="text-white text-xs">
-                          {community.icon === "crypto" ? "C" : community.icon === "stablecoin" ? "S" : "O"}
-                        </span>
-                      </div>
-                      {community.name}
-                    </td>
-                    <td className="py-2">{community.members}</td>
-                    <td className="py-2">
-                      <span className="flex items-center gap-1">
-                        <span className={`w-2 h-2 rounded-full ${community.riskColor}`}></span>
-                        {community.risk}
-                      </span>
-                    </td>
-                    <td className="py-2 text-gray-600">{community.admin}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <div className="p-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Left Column - Communities */}
+          <div className="lg:col-span-2 space-y-8">
+            <div className="space-y-4">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#1e3a5f]/40 flex items-center gap-2">
+                <span className="w-1 h-3 bg-amber-500" /> Member Segments
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="border-b-2 border-[#1e3a5f] bg-[#1e3a5f05]">
+                      <th className="p-4 text-[9px] font-bold uppercase tracking-widest text-[#1e3a5f60]">Classification</th>
+                      <th className="p-4 text-[9px] font-bold uppercase tracking-widest text-[#1e3a5f60]">Units</th>
+                      <th className="p-4 text-[9px] font-bold uppercase tracking-widest text-[#1e3a5f60]">Risk Assessment</th>
+                      <th className="p-4 text-[9px] font-bold uppercase tracking-widest text-[#1e3a5f60]">Authority</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#1e3a5f10]">
+                    {communities.map((community) => (
+                      <tr key={community.name} className="hover:bg-[#1e3a5f02] transition-colors">
+                        <td className="p-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 border border-[#1e3a5f15] bg-[#1e3a5f03] flex items-center justify-center">
+                              <span className="text-[10px] font-black text-[#1e3a5f]">
+                                {community.icon === "crypto" ? "C-01" : community.icon === "stablecoin" ? "S-02" : "O-03"}
+                              </span>
+                            </div>
+                            <span className="text-[11px] font-bold uppercase tracking-tight text-[#1e3a5f]">{community.name}</span>
+                          </div>
+                        </td>
+                        <td className="p-4 font-mono text-[11px] text-[#1e3a5f]">{community.members.toString().padStart(2, '0')}</td>
+                        <td className="p-4">
+                          <span className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest">
+                            <span className={`w-1.5 h-1.5 rounded-none ${community.riskColor} ring-2 ring-offset-2 ${community.riskColor === 'bg-red-500' ? 'ring-red-100' : community.riskColor === 'bg-amber-500' ? 'ring-amber-100' : 'ring-green-100'}`}></span>
+                            {community.risk}
+                          </span>
+                        </td>
+                        <td className="p-4 text-[10px] font-bold text-[#1e3a5f60] uppercase tracking-tighter">{community.admin}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
             {/* Recent Messages */}
-            <h3 className="font-semibold text-[#1e3a5f] mt-6 mb-3">Recent Messages</h3>
-            <div className="space-y-3">
-              {messages.map((msg, i) => (
-                <div key={i} className="flex items-start gap-2 text-sm">
-                  <div className="flex items-center gap-1">
-                    <span className="text-gray-400">•</span>
-                    <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
-                      <span className="text-xs text-gray-600">
-                        {msg.type === "admin" ? "A" : "U"}
-                      </span>
+            <div className="space-y-4 pt-4">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#1e3a5f]/40 flex items-center gap-2">
+                <span className="w-1 h-3 bg-[#1e3a5f]" /> Communication Log
+              </h3>
+              <div className="space-y-2">
+                {messages.map((msg, i) => (
+                  <div key={i} className="flex items-start gap-4 p-4 border border-[#1e3a5f08] bg-[#1e3a5f02] group hover:border-[#1e3a5f15] transition-colors">
+                    <div className="mt-1">
+                      {msg.type === "admin" ?
+                        <Shield className="h-3 w-3 text-amber-600" /> :
+                        <Users className="h-3 w-3 text-[#1e3a5f40]" />
+                      }
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-baseline justify-between mb-1">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-[#1e3a5f]">{msg.sender}</span>
+                        <span className="text-[9px] text-[#1e3a5f40] font-mono">{msg.time}</span>
+                      </div>
+                      <p className="text-[11px] text-[#1e3a5f80] leading-relaxed italic border-l-2 border-[#1e3a5f10] pl-3">
+                        "{msg.message}"
+                      </p>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <span className="font-medium text-[#1e3a5f]">{msg.sender}</span>
-                    <span className="text-gray-600 ml-2">{msg.message}</span>
-                    <span className="text-gray-400 ml-2 text-xs">{msg.time}</span>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Right Column - Group Actions */}
-          <div>
-            <h3 className="font-semibold text-[#1e3a5f] mb-3">Group Actions</h3>
-            <div className="space-y-2">
-              <button className="w-full bg-[#1e3a5f] text-white px-4 py-2.5 rounded text-sm font-medium flex items-center justify-center gap-2">
-                <Users className="w-4 h-4" /> View Member List
+          <div className="space-y-8">
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#1e3a5f]/40 flex items-center gap-2">
+              <span className="w-1 h-3 bg-amber-500" /> Protocols
+            </h3>
+            <div className="space-y-3">
+              <button className="w-full h-14 bg-[#1e3a5f] text-white px-6 border-b-4 border-black/30 text-[11px] font-bold uppercase tracking-[0.15em] flex items-center justify-between group hover:translate-y-0.5 hover:border-b-2 transition-all">
+                <span className="flex items-center gap-3">
+                  <Users className="w-4 h-4 text-amber-500" /> Directory
+                </span>
+                <MoreHorizontal className="w-4 h-4 opacity-20 group-hover:opacity-100 transition-opacity" />
               </button>
-              <button className="w-full bg-[#1e3a5f] text-white px-4 py-2.5 rounded text-sm font-medium flex items-center justify-center gap-2">
-                <MessageSquare className="w-4 h-4" /> View Recent Messages
+              <button className="w-full h-14 bg-[#1e3a5f] text-white px-6 border-b-4 border-black/30 text-[11px] font-bold uppercase tracking-[0.15em] flex items-center justify-between group hover:translate-y-0.5 hover:border-b-2 transition-all">
+                <span className="flex items-center gap-3">
+                  <MessageSquare className="w-4 h-4 text-amber-500" /> Archive
+                </span>
+                <MoreHorizontal className="w-4 h-4 opacity-20 group-hover:opacity-100 transition-opacity" />
               </button>
-              <button className="w-full bg-[#1e3a5f] text-white px-4 py-2.5 rounded text-sm font-medium flex items-center justify-center gap-2">
-                <FileText className="w-4 h-4" /> Send Notice
+              <button className="w-full h-14 bg-amber-600 text-white px-6 border-b-4 border-black/30 text-[11px] font-bold uppercase tracking-[0.15em] flex items-center justify-between group hover:translate-y-0.5 hover:border-b-2 transition-all">
+                <span className="flex items-center gap-3">
+                  <FileText className="w-4 h-4" /> Issue Directive
+                </span>
+                <MoreHorizontal className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity" />
               </button>
+            </div>
+
+            <div className="p-6 border-2 border-dashed border-[#1e3a5f10] bg-[#1e3a5f02]">
+              <p className="text-[9px] font-bold text-[#1e3a5f40] uppercase tracking-[0.2em] mb-4">Compliance Warning</p>
+              <p className="text-[10px] text-[#1e3a5f60] uppercase leading-relaxed font-medium">
+                All communications are logged and timestamped as per the VASP Regulatory Act Section 4-B. Ensure data integrity when issuing directives.
+              </p>
             </div>
           </div>
         </div>

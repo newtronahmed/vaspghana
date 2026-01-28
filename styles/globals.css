@@ -1,4 +1,8 @@
 @import 'tailwindcss';
+@source '../app/**/*.{ts,tsx}';
+@source '../components/**/*.{ts,tsx}';
+@source '../lib/**/*.{ts,tsx}';
+@source '../hooks/**/*.{ts,tsx}';
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
@@ -75,8 +79,11 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+  --font-serif: var(--font-outfit), serif;
+  --font-heading: var(--font-outfit);
+  --font-body: var(--font-jakarta);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -101,10 +108,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -119,7 +126,35 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#e8eef4] text-[#1e3a5f] font-sans;
+    background-image: radial-gradient(#1e3a5f10 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .institutional-card {
+    @apply bg-white border border-[#1e3a5f15] shadow-[4px_4px_0px_0px_#1e3a5f08] transition-all hover:shadow-[6px_6px_0px_0px_#1e3a5f10] hover:-translate-y-0.5;
+  }
+
+  .institutional-grid {
+    background-image: linear-gradient(to right, #1e3a5f0a 1px, transparent 1px),
+      linear-gradient(to bottom, #1e3a5f0a 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glass-header {
+    @apply backdrop-blur-md bg-white/80 border-b border-[#1e3a5f15];
   }
 }

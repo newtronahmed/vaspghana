@@ -1,11 +1,18 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Outfit, Plus_Jakarta_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import '../styles/globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: '--font-outfit',
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: '--font-jakarta',
+});
 
 export const metadata: Metadata = {
   title: 'VASP Ghana Admin Dashboard',
@@ -38,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased bg-[#e8eef4]`}>
+    <html lang="en" className={`${outfit.variable} ${jakarta.variable}`}>
+      <body className={`font-jakarta antialiased bg-[#e8eef4] text-[#1e3a5f]`}>
         <div className="flex min-h-screen">
           <Sidebar />
           <main className="flex-1 lg:ml-64 pt-16 lg:pt-0">

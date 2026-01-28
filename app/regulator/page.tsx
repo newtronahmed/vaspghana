@@ -60,267 +60,231 @@ const vaspOverview = [
 export default function RegulatorPage() {
   return (
     <Suspense fallback={<Loading />}>
-      <div className="p-6 space-y-6">
+      <div className="p-8 space-y-8 institutional-grid min-h-screen">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-[#1e3a5f]">Regulator Portal</h1>
-            <p className="text-muted-foreground">Welcome, Bank of Ghana</p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-[#1e3a5f] pb-6">
+          <div className="space-y-1">
+            <h1 className="text-4xl font-serif text-[#1e3a5f] uppercase tracking-tight">
+              Regulator <span className="text-amber-600">Portal</span>
+            </h1>
+            <div className="flex items-center gap-2">
+              <Shield className="h-4 w-4 text-amber-600" />
+              <p className="text-sm font-medium uppercase tracking-widest text-[#1e3a5f]/60">Bank of Ghana Oversight</p>
+            </div>
           </div>
-          <Button variant="outline" className="border-[#1e3a5f] text-[#1e3a5f] bg-transparent">
+          <Button variant="outline" className="h-12 border-2 border-[#1e3a5f] text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white rounded-none font-bold uppercase tracking-tighter transition-all">
             <Search className="h-4 w-4 mr-2" />
-            Easy market
+            Market Pulse
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-8">
             {/* Stats Cards */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {stats.map((stat) => (
-                <Card key={stat.label} className={stat.highlight ? "border-amber-200 bg-amber-50" : ""}>
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <p className="text-xs text-muted-foreground">{stat.label}</p>
-                      {stat.trend && (
-                        <Badge className="bg-green-100 text-green-700 text-xs">
-                          <TrendingUp className="h-3 w-3 mr-1" />
-                          {stat.trend}
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <p className={`text-2xl font-bold ${stat.highlight ? "text-amber-600" : "text-[#1e3a5f]"}`}>
-                        {stat.value}
-                      </p>
-                      <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-green-500 rounded-lg flex items-center justify-center">
-                        <Coins className="h-6 w-6 text-white" />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div key={stat.label} className={`p-6 institutional-card flex flex-col justify-between h-32 ${stat.highlight ? "bg-amber-50 border-amber-200" : "bg-white"}`}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-[#1e3a5f]/40">{stat.label}</span>
+                    {stat.trend && (
+                      <span className="flex items-center text-[10px] font-bold text-green-600">
+                        <TrendingUp className="h-3 w-3 mr-0.5" />
+                        {stat.trend}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-baseline justify-between">
+                    <span className={`text-4xl font-serif font-bold ${stat.highlight ? "text-amber-600" : "text-[#1e3a5f]"}`}>
+                      {stat.value}
+                    </span>
+                    <stat.icon className={`h-5 w-5 ${stat.highlight ? "text-amber-400" : "text-[#1e3a5f]/20"}`} />
+                  </div>
+                </div>
               ))}
             </div>
 
             {/* Flagged VASPs */}
-            <Card>
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg text-[#1e3a5f] flex items-center gap-2">
-                    <AlertTriangle className="h-5 w-5 text-amber-500" />
-                    Flagged VASPs
-                  </CardTitle>
-                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
+            <div className="institutional-card bg-white overflow-hidden">
+              <div className="px-6 py-4 border-b border-[#1e3a5f10] flex items-center justify-between bg-[#1e3a5f03]">
+                <h3 className="text-sm font-bold uppercase tracking-widest flex items-center gap-2">
+                  <AlertTriangle className="h-4 w-4 text-amber-500" />
+                  Flagged Entities
+                </h3>
+                <ChevronRight className="h-4 w-4 text-[#1e3a5f20]" />
+              </div>
+              <div className="p-6 space-y-4">
                 {flaggedVasps.map((vasp) => (
-                  <div key={vasp.name} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
+                  <div key={vasp.name} className="flex items-center justify-between group">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 border-2 border-amber-100 flex items-center justify-center bg-amber-50/50">
                         <AlertTriangle className="h-4 w-4 text-amber-600" />
                       </div>
-                      <span className="font-medium">{vasp.name}</span>
+                      <div>
+                        <p className="font-bold text-[#1e3a5f] uppercase text-xs tracking-tight">{vasp.name}</p>
+                        <p className="text-[10px] text-muted-foreground uppercase tracking-widest leading-none">High Risk Action Required</p>
+                      </div>
                     </div>
-                    <Button size="sm" className="bg-[#1e3a5f] hover:bg-[#2d4a6f] text-white text-xs">
+                    <Button size="sm" className="bg-[#1e3a5f] hover:bg-amber-600 text-white rounded-none border-b-4 border-black/20 text-[10px] font-bold uppercase px-4 h-8">
                       {vasp.action}
                     </Button>
                   </div>
                 ))}
-              </CardContent>
-            </Card>
-
-            {/* AML Monitoring */}
-            <Card>
-              <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg text-[#1e3a5f] flex items-center gap-2">
-                    <Eye className="h-5 w-5" />
-                    AML Monitoring
-                  </CardTitle>
-                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 gap-3">
-                  {amlMonitoring.map((item) => (
-                    <Button 
-                      key={item.name} 
-                      variant="outline" 
-                      className="justify-start h-auto py-3 border-[#1e3a5f]/20 bg-transparent"
-                    >
-                      <item.icon className="h-4 w-4 mr-2 text-[#1e3a5f]" />
-                      {item.name}
-                      <ChevronRight className="h-4 w-4 ml-auto text-muted-foreground" />
-                    </Button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Regulator Oversight Table */}
-            <Card>
-              <CardHeader className="bg-[#1e3a5f] text-white rounded-t-lg">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center">
-                      <Shield className="h-5 w-5 text-white" />
+            <div className="institutional-card bg-white overflow-hidden">
+              <div className="bg-[#1e3a5f] text-white p-6">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 border-2 border-white/20 flex items-center justify-center">
+                      <Shield className="h-6 w-6 text-amber-500" />
                     </div>
-                    <CardTitle className="text-lg">Regulator Oversight</CardTitle>
+                    <div>
+                      <h2 className="text-xl font-serif uppercase tracking-tight">Oversight Dashboard</h2>
+                      <p className="text-[10px] text-white/50 uppercase tracking-[0.2em]">Institutional Compliance Matrix</p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="text-white/70 hover:text-white hover:bg-white/10">
-                      <Search className="h-5 w-5" />
-                    </Button>
+                  <Search className="h-5 w-5 text-white/30" />
+                </div>
+
+                <div className="grid grid-cols-3 gap-8">
+                  <div>
+                    <p className="text-[10px] text-white/40 uppercase tracking-widest mb-1">Total Members</p>
+                    <p className="text-3xl font-serif font-bold">312</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-amber-400 uppercase tracking-widest mb-1">High Risk</p>
+                    <p className="text-3xl font-serif font-bold text-amber-500 underline decoration-2 underline-offset-4">05</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-red-400 uppercase tracking-widest mb-1">Suspended</p>
+                    <p className="text-3xl font-serif font-bold text-red-500">04</p>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent className="p-0">
-                {/* Mini Stats */}
-                <div className="grid grid-cols-3 gap-0 border-b">
-                  <div className="p-4 text-center border-r bg-[#1e3a5f] text-white">
-                    <p className="text-xs text-white/70">WhatsApp VASP Members</p>
-                    <p className="text-3xl font-bold">312</p>
-                  </div>
-                  <div className="p-4 text-center border-r bg-amber-500 text-white">
-                    <p className="text-xs text-white/90">High Risk Cases</p>
-                    <p className="text-3xl font-bold">5</p>
-                  </div>
-                  <div className="p-4 text-center bg-red-500 text-white">
-                    <p className="text-xs text-white/90">Suspended Firms</p>
-                    <p className="text-3xl font-bold">4</p>
-                  </div>
-                </div>
-                
-                {/* Table */}
-                <table className="w-full text-sm">
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
                   <thead>
-                    <tr className="border-b bg-muted/30">
-                      <th className="p-4 text-left font-medium text-muted-foreground">Company</th>
-                      <th className="p-4 text-left font-medium text-muted-foreground">VASP ID</th>
-                      <th className="p-4 text-left font-medium text-muted-foreground">Compliance Status</th>
-                      <th className="p-4 text-left font-medium text-muted-foreground">Risk Level</th>
+                    <tr className="border-b-2 border-[#1e3a5f] bg-[#1e3a5f05]">
+                      <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-[#1e3a5f60]">Entity</th>
+                      <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-[#1e3a5f60]">Registry ID</th>
+                      <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-[#1e3a5f60]">Status</th>
+                      <th className="p-4 text-[10px] font-bold uppercase tracking-widest text-[#1e3a5f60]">Risk</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y divide-[#1e3a5f10]">
                     {companyList.map((company) => (
-                      <tr key={company.vaspId} className="border-b last:border-0">
-                        <td className="p-4 font-medium">{company.company}</td>
-                        <td className="p-4 text-muted-foreground">{company.vaspId}</td>
+                      <tr key={company.vaspId} className="hover:bg-[#1e3a5f02] transition-colors">
                         <td className="p-4">
-                          <span className={`flex items-center gap-1 ${company.statusColor}`}>
-                            <span className={`w-2 h-2 rounded-full ${company.status === "Verified" ? "bg-green-500" : "bg-red-500"}`} />
+                          <p className="font-bold text-xs uppercase tracking-tight text-[#1e3a5f]">{company.company}</p>
+                        </td>
+                        <td className="p-4">
+                          <code className="text-[10px] font-mono bg-[#1e3a5f08] px-2 py-1 text-[#1e3a5f80]">{company.vaspId}</code>
+                        </td>
+                        <td className="p-4">
+                          <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest ${company.statusColor}`}>
+                            <span className={`w-1.5 h-1.5 rounded-none ${company.status === "Verified" ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]" : "bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]"}`} />
                             {company.status}
                           </span>
                         </td>
                         <td className="p-4">
-                          <Badge className={`${company.riskBg} text-white`}>
-                            {company.risk}
+                          <Badge className={`${company.riskBg} text-white rounded-none border-0 text-[9px] font-black uppercase tracking-tighter px-2`}>
+                            {company.risk} Scale
                           </Badge>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
           {/* Right Sidebar */}
-          <div className="space-y-6">
-            {/* Ghana Risk Heat Map */}
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg text-[#1e3a5f]">Risk Heat Map</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {/* Simplified Ghana Map */}
-                <div className="relative bg-[#e8f4e8] rounded-lg p-4 h-48 mb-4">
-                  <svg viewBox="0 0 200 200" className="w-full h-full">
-                    {/* Simplified Ghana outline */}
-                    <path 
-                      d="M60,20 L140,20 L150,60 L160,100 L150,140 L130,180 L70,180 L50,140 L40,100 L50,60 Z" 
-                      fill="#c8e6c9" 
-                      stroke="#4caf50" 
-                      strokeWidth="2"
-                    />
-                    {/* Risk indicators */}
-                    <circle cx="100" cy="50" r="12" fill="#f44336" opacity="0.8" />
-                    <circle cx="70" cy="90" r="10" fill="#ff9800" opacity="0.8" />
-                    <circle cx="130" cy="80" r="10" fill="#4caf50" opacity="0.8" />
-                    <circle cx="90" cy="130" r="14" fill="#ff9800" opacity="0.8" />
-                    <circle cx="120" cy="150" r="8" fill="#4caf50" opacity="0.8" />
-                    <circle cx="80" cy="160" r="10" fill="#f44336" opacity="0.8" />
-                  </svg>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-green-500" />
-                    <span className="font-medium">$320M</span>
-                    <span className="text-muted-foreground">Total Market Volume</span>
+          <div className="space-y-8">
+            {/* Risk Heat Map */}
+            <div className="institutional-card bg-white p-6">
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-6 border-b border-[#1e3a5f10] pb-2">Regional Risk Map</h3>
+              <div className="relative bg-[#f8fafc] border border-[#1e3a5f08] rounded p-4 h-64 mb-6 group transition-all overflow-hidden">
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none institutional-grid" />
+                <svg viewBox="0 0 200 200" className="w-full h-full filter drop-shadow-md">
+                  <path
+                    d="M60,20 L140,20 L150,60 L160,100 L150,140 L130,180 L70,180 L50,140 L40,100 L50,60 Z"
+                    fill="white"
+                    stroke="#1e3a5f"
+                    strokeWidth="1.5"
+                    className="group-hover:fill-[#1e3a5f03] transition-colors"
+                  />
+                  <circle cx="100" cy="50" r="10" fill="#f44336" className="animate-pulse" />
+                  <circle cx="70" cy="90" r="8" fill="#ff9800" />
+                  <circle cx="130" cy="80" r="8" fill="#4caf50" />
+                  <circle cx="90" cy="130" r="12" fill="#ff9800" className="opacity-80" />
+                  <circle cx="120" cy="150" r="6" fill="#4caf50" />
+                  <circle cx="80" cy="160" r="8" fill="#f44336" className="animate-pulse" />
+                </svg>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between border-l-2 border-green-500 pl-4 py-1">
+                  <div>
+                    <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest leading-none">Market Volume</p>
+                    <p className="text-lg font-serif font-bold h-6">$320.00 M</p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-green-500" />
-                    <span className="font-medium">$48M</span>
-                    <span className="text-muted-foreground">Foreign Inflows</span>
-                  </div>
+                  <TrendingUp className="h-4 w-4 text-green-500" />
                 </div>
-              </CardContent>
-            </Card>
+                <div className="flex items-center justify-between border-l-2 border-blue-500 pl-4 py-1">
+                  <div>
+                    <p className="text-[10px] text-muted-foreground uppercase font-bold tracking-widest leading-none">Foreign Inflow</p>
+                    <p className="text-lg font-serif font-bold h-6">$48.20 M</p>
+                  </div>
+                  <Coins className="h-4 w-4 text-blue-500" />
+                </div>
+              </div>
+            </div>
 
             {/* High-Risk Alerts */}
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg text-[#1e3a5f]">High-Risk Alerts</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
+            <div className="institutional-card bg-white p-6">
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 border-b border-[#1e3a5f10] pb-2">Critical Alerts</h3>
+              <div className="space-y-4">
                 {highRiskAlerts.map((alert) => (
                   <div key={alert.name} className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Building2 className="h-4 w-4 text-muted-foreground" />
+                    <div className="flex items-center gap-3">
+                      <div className={`w-1.5 h-8 ${alert.severity === "high" ? "bg-red-500" : "bg-amber-500"}`} />
                       <div>
-                        <p className="font-medium text-sm">{alert.name}</p>
-                        <p className="text-xs text-muted-foreground">{alert.issue}</p>
+                        <p className="font-bold text-[11px] uppercase tracking-tight text-[#1e3a5f]">{alert.name}</p>
+                        <p className="text-[9px] text-muted-foreground uppercase tracking-widest">{alert.issue}</p>
                       </div>
                     </div>
-                    <span className={`w-3 h-3 rounded-full ${alert.severity === "high" ? "bg-red-500" : "bg-amber-500"}`} />
                   </div>
                 ))}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            {/* VASP Overview */}
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg text-[#1e3a5f]">VASP Overview</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {vaspOverview.map((vasp) => (
-                  <div key={vasp.name} className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className={`w-6 h-6 rounded flex items-center justify-center ${
-                        vasp.status === "Verified" ? "bg-green-100" : 
-                        vasp.status === "Under Review" ? "bg-blue-100" : "bg-red-100"
-                      }`}>
-                        <Building2 className={`h-3 w-3 ${
-                          vasp.status === "Verified" ? "text-green-600" : 
-                          vasp.status === "Under Review" ? "text-blue-600" : "text-red-600"
-                        }`} />
+            {/* VASP Overview List */}
+            <div className="institutional-card bg-white overflow-hidden">
+              <div className="p-6">
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-4 border-b border-[#1e3a5f10] pb-2">VASP Status</h3>
+                <div className="space-y-4">
+                  {vaspOverview.map((vasp) => (
+                    <div key={vasp.name} className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className={`w-8 h-8 rounded-none flex items-center justify-center border ${vasp.status === "Verified" ? "bg-green-50 border-green-100" :
+                            vasp.status === "Under Review" ? "bg-amber-50 border-amber-100" : "bg-red-50 border-red-100"
+                          }`}>
+                          <Building2 className={`h-4 w-4 ${vasp.status === "Verified" ? "text-green-600" :
+                              vasp.status === "Under Review" ? "text-amber-600" : "text-red-600"
+                            }`} />
+                        </div>
+                        <span className="text-[11px] font-bold uppercase tracking-tight text-[#1e3a5f]">{vasp.name}</span>
                       </div>
-                      <span className="text-sm font-medium">{vasp.name}</span>
+                      <span className={`text-[9px] font-black uppercase tracking-widest ${vasp.statusColor}`}>{vasp.status}</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <span className={`w-2 h-2 rounded-full ${
-                        vasp.status === "Verified" ? "bg-green-500" : 
-                        vasp.status === "Under Review" ? "bg-amber-500" : "bg-red-500"
-                      }`} />
-                      <span className={`text-xs ${vasp.statusColor}`}>{vasp.status}</span>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
