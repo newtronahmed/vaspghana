@@ -1,5 +1,5 @@
 import React from "react"
-import { AppSidebar } from "@/components/app-sidebar"
+import { Sidebar } from "@/components/sidebar"
 
 export default function DashboardLayout({
   children,
@@ -7,9 +7,9 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex min-h-screen bg-[#e8eef4]">
-
-      <main className="flex-1 overflow-auto">
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <main className="flex-1 lg:ml-64 pt-16 lg:pt-0 bg-[#e8eef4] min-h-screen">
         {children}
       </main>
     </div>

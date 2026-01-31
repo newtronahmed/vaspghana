@@ -15,7 +15,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'VASP Ghana Admin Dashboard',
+  title: 'VASP Ghana',
   description: 'Virtual Asset Service Provider Management System for Ghana',
   generator: 'v0.app',
   icons: {
@@ -37,8 +37,6 @@ export const metadata: Metadata = {
   },
 }
 
-import { Sidebar } from "@/components/sidebar"
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -47,12 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${jakarta.variable}`}>
       <body className={`font-jakarta antialiased bg-[#e8eef4] text-[#1e3a5f]`}>
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <main className="flex-1 lg:ml-64 pt-16 lg:pt-0">
-            {children}
-          </main>
-        </div>
+        {children}
         <Analytics />
       </body>
     </html>
