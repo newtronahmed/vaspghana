@@ -70,13 +70,14 @@ export function ComingSoon() {
                 <div className="absolute bottom-8 w-full px-6 flex flex-col md:flex-row items-center justify-between text-white/40 text-sm gap-4">
                     <p>© 2025 VASP Ghana. All rights reserved.</p>
                     <div className="flex items-center gap-6">
-                    <Twitter className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
-                    <Linkedin className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
-                    <Github className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
-                </div>
-                <div className="flex items-center gap-4">
-                    <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-                    <span className="hover:text-white cursor-pointer transition-colors">Contact Us</span>
+                        <Twitter className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
+                        <Linkedin className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
+                        <Github className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+                        <span className="hover:text-white cursor-pointer transition-colors">Contact Us</span>
+                    </div>
                 </div>
             </div>
         </div>
