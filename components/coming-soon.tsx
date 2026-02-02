@@ -52,7 +52,7 @@ export function ComingSoon() {
                     {[
                         { icon: Lock, label: "Secure Protocol" },
                         { icon: Globe, label: "Global Standards" },
-                        { icon: Zap, label: "Real-time Compliance" }
+                        { icon: Zap, label: "Compliance" }
                     ].map((item, i) => (
                         <div
                             key={i}
@@ -64,32 +64,12 @@ export function ComingSoon() {
                     ))}
                 </div>
 
-                {/* Interaction Section */}
-                <div className="max-w-md mx-auto space-y-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-700 fill-mode-both">
-                    <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-[#25d366] to-[#3b82f6] rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                        <div className="relative flex gap-2">
-                            <Input
-                                type="email"
-                                placeholder="Enter your email for early access"
-                                className="bg-[#0f172a] border-white/10 focus:border-[#3b82f6] h-12 text-white placeholder:text-white/30"
-                            />
-                            <Button className="bg-[#3b82f6] hover:bg-[#2563eb] h-12 px-6 font-semibold group">
-                                Notify Me
-                                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                            </Button>
-                        </div>
-                    </div>
-                    <p className="text-xs text-white/30 uppercase tracking-widest font-semibold pt-4">
-                        Join the waitlist of 500+ institutional partners
-                    </p>
-                </div>
-            </div>
 
-            {/* Footer / Socials */}
-            <div className="absolute bottom-8 w-full px-6 flex flex-col md:flex-row items-center justify-between text-white/40 text-sm gap-4">
-                <p>© 2025 VASP Ghana. All rights reserved.</p>
-                <div className="flex items-center gap-6">
+
+                {/* Footer / Socials */}
+                <div className="absolute bottom-8 w-full px-6 flex flex-col md:flex-row items-center justify-between text-white/40 text-sm gap-4">
+                    <p>© 2025 VASP Ghana. All rights reserved.</p>
+                    <div className="flex items-center gap-6">
                     <Twitter className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
                     <Linkedin className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
                     <Github className="w-5 h-5 cursor-pointer hover:text-[#3b82f6] transition-colors" />
